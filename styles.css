@@ -249,6 +249,7 @@ h1, h2, h3 {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
     margin-top: 2rem;
+    justify-items: center;
 }
 
 .cast-card {
@@ -259,6 +260,8 @@ h1, h2, h3 {
     border: 1px solid rgba(212, 175, 55, 0.2);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .cast-card:hover {
@@ -271,6 +274,33 @@ h1, h2, h3 {
     margin-bottom: 1.5rem;
 }
 
+.cast-photo-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    border: 3px solid #d4af37;
+    background: rgba(212, 175, 55, 0.1);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.cast-photo-img[src=""],
+.cast-photo-img:not([src]) {
+    background: linear-gradient(45deg, #d4af37, #f4d03f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cast-gallery-img[src=""],
+.cast-gallery-img:not([src]) {
+    background: rgba(212, 175, 55, 0.2);
+}
+
 .placeholder-photo {
     width: 120px;
     height: 120px;
@@ -281,6 +311,31 @@ h1, h2, h3 {
     justify-content: center;
     font-size: 3rem;
     margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.cast-photos-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cast-gallery-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.cast-gallery-img:hover {
+    transform: scale(1.05);
+    border-color: #d4af37;
     box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
 }
 
@@ -429,6 +484,8 @@ h1, h2, h3 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    visibility: visible;
+    opacity: 1;
 }
 
 .award-item {
@@ -439,6 +496,9 @@ h1, h2, h3 {
     border: 1px solid rgba(212, 175, 55, 0.2);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    display: block;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .award-item:hover {
@@ -475,26 +535,57 @@ h1, h2, h3 {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
-    height: 200px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    max-height: 600px;
+    padding: 1rem;
+}
+
+.quotes-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.quotes-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.quotes-container::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+}
+
+.quotes-container::-webkit-scrollbar-thumb:hover {
+    background: #f4d03f;
 }
 
 .quote {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    position: relative;
+    opacity: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     border: 1px solid rgba(212, 175, 55, 0.2);
     backdrop-filter: blur(10px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .quote.active {
-    opacity: 1;
+    border-color: #d4af37;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    transform: scale(1.02);
+}
+
+.quote:hover {
+    border-color: #d4af37;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
 }
 
 .quote p {
@@ -587,6 +678,8 @@ h1, h2, h3 {
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 2rem;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .share-button:hover {
@@ -599,6 +692,8 @@ h1, h2, h3 {
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .social-link {
@@ -610,6 +705,9 @@ h1, h2, h3 {
     border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 25px;
     backdrop-filter: blur(10px);
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block;
 }
 
 .social-link:hover {

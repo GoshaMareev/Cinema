@@ -34,20 +34,8 @@ function initializeAnimations() {
             ease: 'back.out(1.7)'
         }, '-=0.8');
 
-    // Cast cards animation
-    gsap.from('.cast-card', {
-        duration: 1,
-        y: 100,
-        opacity: 0,
-        stagger: 0.3,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.cast',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-        }
-    });
+    // Cast cards - static (no animation)
+    // Removed animation to make images visible immediately
 
     // Timeline items animation
     gsap.from('.timeline-item', {
@@ -79,21 +67,8 @@ function initializeAnimations() {
         }
     });
 
-    // Awards bounce animation
-    gsap.from('.award-item', {
-        duration: 0.8,
-        y: 50,
-        opacity: 0,
-        scale: 0.8,
-        stagger: 0.2,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-            trigger: '.awards-grid',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-        }
-    });
+    // Awards - static (no animation)
+    // Removed animation to make awards visible immediately
 
     // Behind the scenes photos animation
     gsap.from('.behind-photo', {
@@ -110,34 +85,8 @@ function initializeAnimations() {
         }
     });
 
-    // Share section animation
-    gsap.from('.share-button', {
-        duration: 1,
-        y: 50,
-        opacity: 0,
-        scale: 0.8,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-            trigger: '.share',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-        }
-    });
-
-    gsap.from('.social-link', {
-        duration: 0.8,
-        y: 30,
-        opacity: 0,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.social-links',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-        }
-    });
+    // Share section - static (no animation)
+    // Removed animation to make buttons visible immediately
 
     // Section titles animation
     gsap.from('.section-title', {
@@ -166,34 +115,14 @@ function initializeAnimations() {
     });
 }
 
-// Quote rotation functionality
+// Quote rotation functionality - static display, no autoscroll
 function initializeQuoteRotation() {
     const quotes = document.querySelectorAll('.quote');
-    let currentQuote = 0;
 
-    function showNextQuote() {
-        quotes[currentQuote].classList.remove('active');
-        currentQuote = (currentQuote + 1) % quotes.length;
-        quotes[currentQuote].classList.add('active');
-    }
-
-    // Start quote rotation
-    setInterval(showNextQuote, 4000);
-
-    // Animate quote transitions
+    // Make all quotes visible
     quotes.forEach((quote, index) => {
-        gsap.from(quote, {
-            duration: 0.5,
-            y: 20,
-            opacity: 0,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.quotes-container',
-                start: 'top 80%',
-                end: 'bottom 20%',
-                toggleActions: 'play none none reverse'
-            }
-        });
+        quote.style.opacity = '1';
+        // Remove active class rotation - all quotes are visible
     });
 }
 
