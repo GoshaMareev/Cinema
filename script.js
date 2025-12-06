@@ -1,5 +1,8 @@
-// Register ScrollTrigger plugin
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
+if (typeof ScrollToPlugin !== 'undefined') {
+    gsap.registerPlugin(ScrollToPlugin);
+}
 
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -280,14 +283,27 @@ function initializeSmoothScrolling() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                gsap.to(window, {
-                    duration: 1.5,
-                    scrollTo: {
-                        y: targetSection,
-                        offsetY: 80
-                    },
-                    ease: 'power3.inOut'
-                });
+                // Try GSAP ScrollTo first, fallback to native smooth scroll
+                if (typeof ScrollToPlugin !== 'undefined') {
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: {
+                            y: targetSection,
+                            offsetY: 80
+                        },
+                        ease: 'power3.inOut'
+                    });
+                } else {
+                    // Fallback to native smooth scrolling
+                    const offset = 80;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
@@ -297,14 +313,27 @@ function initializeSmoothScrolling() {
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
-        gsap.to(window, {
-            duration: 1.5,
-            scrollTo: {
-                y: section,
-                offsetY: 80
-            },
-            ease: 'power3.inOut'
-        });
+        // Try GSAP ScrollTo first, fallback to native smooth scroll
+        if (typeof ScrollToPlugin !== 'undefined') {
+            gsap.to(window, {
+                duration: 1.5,
+                scrollTo: {
+                    y: section,
+                    offsetY: 80
+                },
+                ease: 'power3.inOut'
+            });
+        } else {
+            // Fallback to native smooth scrolling
+            const offset = 80;
+            const elementPosition = section.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     }
 }
 
